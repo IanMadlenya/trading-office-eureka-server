@@ -1,22 +1,25 @@
 language: Java
-
 jdk:
-  - oraclejdk8
-
+- oraclejdk8
 before_install:
-  - pip install --user codecov
-
+- pip install --user codecov
 after_success:
-  - codecov
-  - ./gradlew sonarqube
-
+- codecov
+- ./gradlew sonarqube
 branches:
   only:
-    - master
-    - coverity_scan
+  - master
+  - coverity_scan
 before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
+deploy:
+  provider: heroku
+  api_key:
+    secure: MyAbVc1vua2vRgoOb1ccOX7lXweN1D3qQUgnJqBJIG6e3w3fu1B7jE9ZEz5iwYkV+fSpxOx01XM2T5akhXbFo7Kjg51AUVb/se8YSI9Q7ns1u74gtYHwYB0LCeqHWnfwYBMzBgfbDMfI2uS+XBvGRrsNFNi1kt5hKyBMlonAyNB9p1Mf83n2ND+OsFIObUZGa0yogwH6SBfTD9gKLZ3QBkzRPh30553sAFj+9w2T404Lp9Y1FyXryG/EsC8k4hAUHpUJP0vlnbdkhI3ZU3hPyWBdKcaInHvJXFHDJludWscy65H6bCzWbOdXHZdOe0/n7Xzh86XEhgPhE/Jo96drSikYIkBXyuxacKaRi6Zw1Ahj7a3+AswyqcOX+XzcgFztJhHIwsZcW1URSTa5EQmBwtkjW/f/GQXmWXAFwaCdaZA04whPotQ7KZdq6xWpwuFv/AIQcHFvlHs3SHz9WJ/7eN8OmCS9wyJiNblyepnuJkTnuCSjeTeI8JW1/z+jvP2CQHXE/Fxze5JQq9mcf/ZVOBeOXLzITirqhQa7M79O6J/2aGaMTLIyU/NcVr8aMVcO/RuiPuDU3K9y08YQ1gZJ1Wkfv33GPsrHrqiPTzhfa+EXuf/Gc3rDTiyrBLvepP2bpCi8MITHyFz5Onmt/Z75j+x9OFO7T0CpAZOIij7J5Wk=
+  app: eureka-server
+  on:
+    repo: spolnik/trading-office-eureka-server
