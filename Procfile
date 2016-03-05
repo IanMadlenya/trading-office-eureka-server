@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -Dserver.port=$PORT -javaagent:newrelic/newrelic.jar -jar build/libs/trading-office-eureka-server-1.0.0.jar
