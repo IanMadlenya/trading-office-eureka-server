@@ -47,9 +47,7 @@ test {
 
 dependencies {
     compile libs.spring.boot_web,
-            libs.spring.eureka_server,
-            libs.springfox.swagger_ui,
-            libs.springfox.swagger2
+            libs.spring.eureka_server
 }
 
 jar {
